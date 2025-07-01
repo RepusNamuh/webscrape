@@ -1,3 +1,9 @@
 .vscode
 *test*
+!testing.ipynb
 *.log
+*.txt
+*.csv
+build
+.spec
+build/

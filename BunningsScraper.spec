@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['main.py'],
+    ['bunningscraper.py'],
     pathex=[],
     binaries=[],
     datas=[],
