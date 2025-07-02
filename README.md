@@ -16,3 +16,10 @@
 
 # Using the program.
     You can manualy use the program by click BunningsScraper.exe or runonce.bat
+    The only pre-setup you might want to do is to go to your webpath2 for bunningsJB.exe
+    and at the first line, set a numbers from 0-infinity, what ever it maybe, but
+    it must be a positive integer.
+    The number is responsible for settings the waiting time for a website to load.
+    If your internet is slow and you set it to 2 for example, you will be unable to
+    scrape the data off the website. So you can increase it until to feel comfortable
+    Or, you can get faster internet.
