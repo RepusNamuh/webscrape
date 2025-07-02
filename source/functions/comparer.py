@@ -39,14 +39,16 @@ class ItemCompare:
         """Create entry when price hasn't changed - extend the date range."""
 
         old_range = old_item["Lowest Price Dates"].split(";")
-        start_date, end_date  = old_range.pop().split("-")
+        start_date, end_date = old_range.pop().split("-")
         nextday = self._date_comparison(today_date, end_date)
 
         if nextday:
             latest_range = self._date_range(start_date, today_date)
 
         else:
+            previous_range = self._date_range(start_date, end_date)
             latest_range = self._date_range(today_date, today_date)
+            latest_range = f"{previous_range};{latest_range}"
 
         new_range = ";".join(old_range + [latest_range])
 
