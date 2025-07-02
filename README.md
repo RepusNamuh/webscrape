@@ -23,15 +23,3 @@
     If your internet is slow and you set it to 2 for example, you will be unable to
     scrape the data off the website. So you can increase it until to feel comfortable
     Or, you can get faster internet.
-
-# What is Changable in the .txt and .csv files.
-You can change Whatever you want, just not the .csv files,
-
-## frequency.txt
-For frequency, the first number is the date interval you want the program to automatically run at,
-while the second number is the hour in the format from 00:00 to 23:59
-## faultypath.txt and webpath2.txt
-You can do whatever you want with the former, while for the latter, you can change wait tolerance for
-url retrieval, whatever url you want beside that (invalid url will not return results)
-## scraperesult.csv
-DO NOT CHANGE ANYTHING ON THIS FILE,
