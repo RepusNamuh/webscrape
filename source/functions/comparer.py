@@ -18,8 +18,9 @@ class ItemCompare:
     def _date_comparison(self, new_date, old_date):
         """Check if old_date is yesterday of new_date"""
         true_yesterday = self.format_date(new_date - timedelta(days=1))
+        new_date = self.format_date(new_date)
 
-        return (old_date == true_yesterday)
+        return (old_date == true_yesterday or old_date == new_date)
 
     def _date_range(self, start_date, end_date):
         start_date = self.format_date(start_date)
