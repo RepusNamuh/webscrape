@@ -8,7 +8,7 @@ class FileManipulation():
         self.outfile = outfile
         self.waitime = waitime
         self.headers = ["Name", "Link", "Lowest Price", 
-                        "Start Date", "End Date", "Today Price"]
+                        "Lowest Price Dates", "Today Price"]
 
     def read_weburls(self):
         """Read URLs from a file and return them as a list."""
@@ -42,13 +42,13 @@ class FileManipulation():
                 data = {}
 
                 try:
-                    self.headers = next(csv_file)  # Read the header line
+                    next(csv_file)  # Read the header line
                 except StopIteration:
-                    # If the file is empty, create headers
+                    # If the file is empty
                     return data
                 
                 for line in list(csv_file)[1:]:
-                    if len(line) == 6:
+                    if len(line) == 5:
                         data[line[1]] = {key: value for 
                                         key, value in zip(self.headers, 
                                                         line)}
