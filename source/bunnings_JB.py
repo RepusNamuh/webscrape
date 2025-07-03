@@ -28,14 +28,11 @@ DEFAULT_WAIT_TIME = 10 # Default wait time for page load
 # and return values for not found cases
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 11.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.6998.166 Safari/537.36"}
 PATTERNS = {
-    "bunnings": [
-        re.compile(r"MuiTypography-root sc-500f213-2 .* MuiTypography-h1"), 
-        "sc-bbcf7fe4-3 kAMCuk"
-    ],
-    "jbhifi": [
-        re.compile(r"_12mtftw9"),  # Name pattern
-        "PriceTag_actualWrapperDefault__1eb7mu915"  # Updated price pattern
-    ]
+    "bunnings": {"TAG_NAME": "h1", "CSS_SELECTOR": "p[data-locator='product-price']"},  # Name pattern
+    "jbhifi": 
+        {"TAG_NAME": "h1", 
+         "CLASS_NAME": "PriceTag_actualWrapperDefault__1eb7mu915"},  # Name pattern
+
 }
 
 # Setup logging for background execution

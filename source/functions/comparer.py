@@ -57,7 +57,7 @@ class ItemCompare:
 
     def create_higher_price_entry(self, name, path, old_item, new_price):
         """Create entry when new price is higher - keep old lowest price."""
-        old_price = old_item["price"]
+        old_price = old_item["Lowest Price"]
 
         return (name, path, old_price, old_item["Lowest Price Dates"], new_price)
 

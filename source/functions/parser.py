@@ -45,16 +45,21 @@ class Parser:
             wait = WebDriverWait(driver, self.wait_time)  
             
             # Wait for price element with explicit condition
-            price_element = wait.until(
-                EC.presence_of_element_located((By.CLASS_NAME, PRICEPATTERN))
-            )
-            price_text = "".join(price_element.text.split())
+            try:
+                price_element = wait.until(
+                    EC.presence_of_element_located(
+                        (getattr(By, PRICEPATTERN[0]), PRICEPATTERN[1])))
+        
+                price_text = "".join(price_element.text.split())
+            except:
+                price_text = self.NOTFOUND
             
             # Get product name with explicit wait
             try:
                 name_element = wait.until(
-                    EC.presence_of_element_located((By.TAG_NAME, 'h1'))
-                )
+                    EC.presence_of_element_located(
+                        (getattr(By, NAMEPATTERN[0]), NAMEPATTERN[1])))
+                
                 name_text = name_element.text
             except:
                 name_text = self.NOTFOUND
@@ -93,12 +98,15 @@ class Parser:
     def scrape_single_url(self, url):
         url = url.strip()
         website_name = self.get_website_name(url)
-        patterns = self.PATTERNS.get(website_name, (self.NOTFOUND, self.NOTFOUND))
-
         try:
-            name, price = self._scrape_requests(url, patterns)
-            if name == self.NOTFOUND or price == self.NOTFOUND:
-                name, price = self._scrape_with_selenium(url, patterns)
+            patterns = self.PATTERNS[website_name].items()
+            
+        except KeyError:
+            logging.warning(f"No patterns found for {website_name}. Using default patterns.")
+            return (url, self.NOTFOUND, self.NOTFOUND)
+        
+        try:
+            name, price = self._scrape_with_selenium(url, patterns)
             
             return (url, name, price)
         except Exception as e:
